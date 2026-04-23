@@ -65,24 +65,24 @@ st.markdown("### 🌿 Panel de control del sistema de Carla")
 col1, col2 = st.columns(2)
 
 with col1:
-    if st.button('🌼 Encender Motor'):
+    if st.button('🌼 Encender Luces'):
         act1 = "ON"
         client1 = paho.Client("GIT-HUB")
         client1.on_publish = on_publish
         client1.connect(broker, port)
         message = json.dumps({"Act1": act1})
-        ret = client1.publish("cmqtt_s", message)
+        ret = client1.publish("carlaluces_s", message)
     else:
         st.write('')
 
 with col2:
-    if st.button('🌸 Apagar Motor'):
+    if st.button('🌸 Apagar Luces'):
         act1 = "OFF"
         client1 = paho.Client("GIT-HUB")
         client1.on_publish = on_publish
         client1.connect(broker, port)
         message = json.dumps({"Act1": act1})
-        ret = client1.publish("cmqtt_s", message)
+        ret = client1.publish("carlaluces_s", message)
     else:
         st.write('')
 
@@ -99,7 +99,7 @@ if st.button('🌻 Enviar nivel al motor'):
     client1.on_publish = on_publish
     client1.connect(broker, port)
     message = json.dumps({"Analog": float(values)})
-    ret = client1.publish("cmqtt_a", message)
+    ret = client1.publish("carlamotor_a", message)
 else:
     st.write('')
 
