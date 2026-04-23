@@ -67,7 +67,7 @@ col1, col2 = st.columns(2)
 with col1:
     if st.button('🌼 Encender Luces'):
         act1 = "ON"
-        client1 = paho.Client("GIT-HUB")
+        client1 = paho.Client("Motor_Casa_Campo")
         client1.on_publish = on_publish
         client1.connect(broker, port)
         message = json.dumps({"Act1": act1})
@@ -78,7 +78,7 @@ with col1:
 with col2:
     if st.button('🌸 Apagar Luces'):
         act1 = "OFF"
-        client1 = paho.Client("GIT-HUB")
+        client1 = paho.Client("Motor_Casa_Campo")
         client1.on_publish = on_publish
         client1.connect(broker, port)
         message = json.dumps({"Act1": act1})
@@ -95,7 +95,7 @@ values = st.slider('🌼 Nivel de funcionamiento', 0.0, 100.0)
 st.write('🌿 Nivel seleccionado:', values)
 
 if st.button('🌻 Enviar nivel al motor'):
-    client1 = paho.Client("GIT-HUB")
+    client1 = paho.Client("Motor_Casa_Campo")
     client1.on_publish = on_publish
     client1.connect(broker, port)
     message = json.dumps({"Analog": float(values)})
